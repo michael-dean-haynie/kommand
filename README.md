@@ -1,5 +1,21 @@
 # kommand
 
+## Install
+``` sh
+# install (globally)
+npm install -g @michael-dean-haynie/kommand
+
+# uninstall (globally)
+npm uninstall -g @michael-dean-haynie/kommand
+```
+
+## Usage
+TODO: fill out
+``` sh
+kd <args>
+kommand <args>
+```
+
 ## Development
 ``` sh
 npm install
@@ -12,6 +28,6 @@ npm link
 npm unlink kommand -g
 
 # symlink (or installing from npm globally) lets you execute the program on your machine like so:
-kd <args>
-kommand <args>
+kd <args> # see usage section
+kommand <args> # see usage section
 ```
