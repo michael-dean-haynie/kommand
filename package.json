@@ -1,0 +1,25 @@
+{
+  "name": "kommand",
+  "version": "0.0.0",
+  "description": "",
+  "bin": {
+    "kommand": "./dist/cli.js",
+    "kd": "./dist/cli.js"
+  },
+  "scripts": {
+    "watch": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^12.1.0"
+  },
+  "devDependencies": {
+    "@types/commander": "^2.12.0",
+    "@types/node": "^22.9.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  }
+}
