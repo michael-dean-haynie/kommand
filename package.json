@@ -7,12 +7,17 @@
     "kd": "./dist/cli.js"
   },
   "scripts": {
+    "build": "tsc",
     "watch": "tsc --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [],
-  "author": "",
+  "author": "Michael Haynie",
   "license": "MIT",
+  "files": [
+    "./dist"
+  ],
   "dependencies": {
     "commander": "^12.1.0"
   },
