@@ -2,6 +2,11 @@
   "name": "@michael-dean-haynie/kommand",
   "version": "0.0.0",
   "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/michael-dean-haynie/kommand.git"
+  },
+  "homepage": "https://github.com/michael-dean-haynie/kommand.git",
   "bin": {
     "kommand": "./dist/cli.js",
     "kd": "./dist/cli.js"
