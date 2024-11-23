@@ -2,6 +2,7 @@
 
 import { Command } from 'commander';
 import packageJson from '../package.json';
+import Enquirer from 'enquirer';
 
 const program = new Command();
 
@@ -26,4 +27,21 @@ program
 //   console.log('Options:', options);
 // });
 
+program.action((positional, optional, options) => {
+    main().catch(console.error);
+});
+
 program.parse();
+
+async function main() {
+    const { AutoComplete } = Enquirer as any;
+  
+    const prompt = new AutoComplete({
+      name: 'command',
+      message: 'Select a command:',
+      choices: ['start', 'stop', 'restart', 'status', 'configure'],
+    });
+  
+    const command = await prompt.run();
+    console.log(`You selected: ${command}`);
+}

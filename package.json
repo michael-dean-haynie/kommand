@@ -25,7 +25,8 @@
     "./dist"
   ],
   "dependencies": {
-    "commander": "^12.1.0"
+    "commander": "^12.1.0",
+    "enquirer": "^2.4.1"
   },
   "devDependencies": {
     "@types/commander": "^2.12.0",
