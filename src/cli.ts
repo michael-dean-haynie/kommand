@@ -3,6 +3,7 @@
 import { Command } from 'commander';
 import packageJson from '../package.json';
 import Enquirer from 'enquirer';
+import { exec } from 'child_process';
 
 const program = new Command();
 
@@ -28,20 +29,46 @@ program
 // });
 
 program.action((positional, optional, options) => {
-    main().catch(console.error);
+  main().catch(console.error);
 });
 
 program.parse();
 
 async function main() {
-    const { AutoComplete } = Enquirer as any;
-  
+  const { AutoComplete } = Enquirer as any;
+
+  exec('mdfind "kind:application"', async (err, stdout, stderr) => {
+    if (err) {
+        console.error(`Error: ${stderr}`);
+        return;
+    }
+    const results = stdout.split('\n')
+     .filter(Boolean); // Remove empty lines
+    //  .map(result => trimUpToLastChar(result, '/')) // remove path in front of application names
+     // 🌐 🗂️ 🔖 📑 💻 📕
+
     const prompt = new AutoComplete({
       name: 'command',
       message: 'Select a command:',
-      choices: ['start', 'stop', 'restart', 'status', 'configure'],
+      limit: 10,
+      choices: results,
     });
   
     const command = await prompt.run();
     console.log(`You selected: ${command}`);
+    exec(`open "${command}"`, async (err, stdout, stderr) => {
+      if (err) {
+          console.error(`Error: ${stderr}`);
+          return;
+      }
+    });
+  });
+}
+
+function trimUpToLastChar(input: string, char: string) {
+  const index = input.lastIndexOf(char);
+  if (index === -1) {
+    return input; // If the character is not found, return the original string
+  }
+  return input.substring(index + 1).trim(); // Extract everything after the character
 }
